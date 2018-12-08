@@ -1,0 +1,18 @@
+.container{
+  display: flex;
+  flex-wrap: wrap;
+  align-self: center;
+  padding: 3%;
+
+}
+
+h2{
+  text-align: center;
+  color: #555;
+}
+.jumbotron h1 {
+  color: white;
+}
+.card{
+margin-bottom: 10%;
+}

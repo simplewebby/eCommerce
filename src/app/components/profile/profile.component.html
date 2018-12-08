@@ -1,0 +1,12 @@
+
+<div class="container">
+<div *ngIf="user">
+  <h1 class="text-primary">Profile Info</h1>
+  <h4 class="page-header">Your Name: {{ user.name }}</h4>
+  <ul class="list-group">
+    <li class="list-group-item">Username: {{ user.username }}</li>
+    <li class="list-group-item">Email: {{ user.email }}</li>
+  </ul>
+</div>
+<a class="btn btn-primary" [routerLink]="['/recipe']" role="button">Go to Recipes &raquo;</a>
+</div>

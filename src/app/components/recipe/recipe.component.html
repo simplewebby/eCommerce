@@ -1,0 +1,121 @@
+<br >
+<br>
+<div class="container">
+  <h2 class ="text-primary"> Find A Recipe:</h2> <br>
+  <input [(ngModel)]="searchText" placeholder="Search"><br><br><br>
+  <div class="row">
+    <div *ngFor="let recipe of recipes | recipes: searchText" class="card" style="width:18rem;margin:1rem">
+      <img id="imgs" src="{{recipe.image_url }}">
+      <div class="card-body">
+        <h5 class="card-title"> {{recipe.title}}</h5>
+        <p class="card-text"> Type: {{recipe.type}}</p>
+        <p class="card-text">Ingredients: {{recipe.ingredients}}</p>
+        <p class="card-text">Created on: {{recipe.created_date | date:'MMM dd, yyyy'}} by {{recipe.author}} </p>
+        <p class="card-text">Price $: {{recipe.price}}</p>
+        <input type="button" (click)="deleteRecipe(recipe._id)" value="Delete" class="btn btn-danger">
+        <button type="button" name="button" class="btn btn-success" (click)="showEditForm(recipe)">Edit</button>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<br>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <form #editForm="ngForm" (ngSubmit)="showEditForm(recipe)" *ngIf="toggleForm">
+        <h2 class="text-primary">Edit A Recipe:</h2>
+        <div class="form-group">
+          <label for="name">Title</label>
+          <input type="text" class="form-control" [(ngModel)]="selectedRecipe.title" name="title" required>
+        </div>
+          <div class="form-group">
+            <label for="name">Type</label>
+            <input type="text" class="form-control" [(ngModel)]="selectedRecipe.type" name="type" required>
+          </div>
+          <div class="form-group">
+            <label for="name">Author</label>
+            <input type="text" class="form-control" [(ngModel)]="selectedRecipe.author" name="author" required>
+          </div>
+        <div class="form-group">
+          <label for="name">Ingredients</label>
+          <input type="text" class="form-control" [(ngModel)]="selectedRecipe.ingredients" name="ingredients" required>
+        </div>
+        <div class="form-group">
+          <label for="name">Image</label>
+          <img id="imgs" src="{{selectedRecipe.image_url}}">
+          <input type="text" class="form-control" [(ngModel)]="selectedRecipe.image_url" name="image_url" required>
+        </div>
+        <div class="form-group">
+          <label for="name">Created date</label>
+          <input type="text" class="form-control" [(ngModel)]="selectedRecipe.created_date" name="created_date" required>
+        </div>
+        <div class="form-group">
+          <label for="name">Price $ </label>
+          <input type="text" class="form-control" [(ngModel)]="selectedRecipe.price" name="price">
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-success"(click)="editRecipe(editForm)">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<br>
+<br>
+<br>
+<div class="container">
+  <form #myForm="ngForm" (ngSubmit)="addRecipe()" *ngIf="!toggleForm">
+    <div class="form-group">
+      <h2 class="text-primary">Add A Recipe</h2>
+      <label>Title</label>
+      <input type="text" [(ngModel)]="title" name="title" class="form-control">
+      <label>Type</label>
+      <input type="text" [(ngModel)]="type" name="type" class="form-control">
+      <label>Author</label>
+      <input type="text" [(ngModel)]="author" name="author" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Ingredients</label>
+      <input type="text" [(ngModel)]="ingredients" name="ingredients" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Image URL</label>
+      <input type="text" [(ngModel)]="image_url" name="image_url" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Price $ </label>
+      <input type="text" [(ngModel)]="price" name="price" class="form-control">
+    </div>
+    <button type="submit" name="button" class="btn btn-success">Add Recipe</button>
+  </form>
+</div>
+<br>
+<br>
+<br>
+<div class="container">
+  <h2 class="text-primary"> All Recipes:</h2>
+    <div class="main">
+  <div class="row">
+<div *ngFor="let recipe of recipes ">
+  <div class="card" style="width: 17rem; margin: 1rem">
+    <img  id="imgs" src="{{recipe.image_url }}">
+    <div class="card-body">
+      <h5 class="card-title"> {{recipe.title}}</h5>
+      <p class="card-text"> Type:  {{recipe.type}}</p>
+      <p class="card-text">Ingredients: {{recipe.ingredients}}</p>
+      <p class="card-text">Created on: {{recipe.created_date | date:'MMM dd, yyyy'}} by  {{recipe.author}} </p>
+      <p class="card-text">Price $: {{recipe.price }} </p>
+      <input type="button" (click)="deleteRecipe(recipe._id)" value="Delete" class="btn btn-danger">
+      <button type="button" name="button"class="btn btn-success"  (click)="showEditForm(recipe)">Edit</button>
+     </div>
+    </div>
+  </div>
+ </div>
+</div>
+</div>
+

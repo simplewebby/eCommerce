@@ -1,0 +1,32 @@
+<div class="jumbotron text-center bg-warning">
+
+    <h1>Recipe Exchange</h1>
+    <p class="lead"></p>
+    <p>
+      <a class="btn btn-primary" [routerLink]="['/register']" role="button">Register &raquo;</a>
+      <a class="btn btn-primary" [routerLink]="['/login']" role="button">Login &raquo;</a>
+    </p>
+
+</div>
+<h2 class="text-primary"> Today's Favorite Picks:</h2>
+<div class="container">
+      <div class="row">
+        <div *ngFor="let recipe of recipes ">
+          <div class="col">
+            <div class="card" style="width: 18rem; margin-left:5%">
+              <img id="imgs" src="{{recipe.image_url }}">
+              <div class="card-body">
+                <h5 class="card-title"> {{recipe.title}}</h5>
+                <p class="card-text"> Type: {{recipe.type}}</p>
+                <p class="card-text">Created on: {{recipe.created_date | date:'MMM dd, yyyy'}} by {{recipe.author}} </p>
+                <p class="card-text"> Price $: {{ recipe.price }}</p>
+                <a class="btn btn-warning" [routerLink]="['/register']" role="button">Buy &raquo;</a>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
